@@ -57,7 +57,7 @@ label {
             </div>
         @endif    
 
-        <form  method="post" action="{{ route('validate.form') }}" novalidate>
+        <form  method="post" action="{{ route('validate.form') }}"  enctype="multipart/form-data" novalidate>
 
             @csrf
 

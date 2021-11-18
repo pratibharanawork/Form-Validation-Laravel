@@ -28,13 +28,12 @@ class UserController extends Controller
           'message' => 'required',
           'fileupload' =>'required',
        ]);
-       if ($request->hasFile('fileupload')) {
-            $path = $request->file('fileupload')->store('/userdata');
-            $this->formsubmit->fileupload = $path;
-        }
-
-      //  Store data in database
-      $this->formsubmit->create($request->all());
+        $input = request()->all();
+        if(request()->has('fileupload')){
+              $input['thumbnail']=request('fileupload')->store('userData');
+              }
+        $this->formsubmit->create($input);
+        //  Store data in database
       return back()->with('success', 'Your form has been submitted.');
     }
 }
