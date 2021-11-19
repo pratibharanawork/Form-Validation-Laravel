@@ -11,13 +11,13 @@ class UserController extends Controller
         $this->formsubmit =$formsubmit;
     }
 
-    //Code for submitting the User form data in user Table//
+    //Code for submitting the User form data in user Table
     public function userFormdata()
     {
        return view('user.index');
     }
 
-    //Code for submitting the User form data in user Table//
+    //Code for submitting the User form data in user Table
     public function saveFormdata(Request $request)
     {
           // Form validation
@@ -26,9 +26,15 @@ class UserController extends Controller
           'email' => 'required|email',
           'subject'=>'required',
           'message' => 'required',
+          'time'=>'required',
           'fileupload' =>'required',
        ]);
-        $input = request()->all();
+       //creating sing date time object 
+       $date = $request['date'];
+       $time= $request['time'];
+       $input['datetime']=date('Y-m-d H:i:s', strtotime("$date $time"));
+       $input = request()->all();
+       //Check if request has any file and store inside storage folder
         if(request()->has('fileupload')){
               $input['thumbnail']=request('fileupload')->store('userData');
               }

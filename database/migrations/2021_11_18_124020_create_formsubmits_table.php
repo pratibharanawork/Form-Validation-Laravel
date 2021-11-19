@@ -19,8 +19,7 @@ class CreateFormsubmitsTable extends Migration
             $table->string('email',90);
             $table->string('subject',60);
             $table->string('message');
-            $table->timestamp('date');
-            $table->string('time');
+            $table->timestamp('datetime');
             $table->string('fileupload');
             $table->timestamps();
         });

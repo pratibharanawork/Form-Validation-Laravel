@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Formsubmit extends Model
 {
     use HasFactory;
-    protected $fillable=['name','email','subject','message','date','time','fileupload'];
+    protected $fillable=['name','email','subject','message','datetime','fileupload'];
 }
